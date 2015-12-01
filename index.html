@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title></title>
+	<link rel="stylesheet" href="assets/css/bootstrap.css">
+	<link rel="stylesheet" href="assets/css/jaylon.css">
+</head>
+<body>
+<div class="container-fluid">
+	<nav class="navbar navbar-fixed-top">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header jaylon-logo">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Jaylon</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Jaylon</a>
+			</div>
+	</nav>
+	<div class="row">
+		<ul class="item">
+			<li>
+				<a href="#">
+					<img alt="" src="" />
+				</a>
+			</li>
+		</ul>
+	</div>
+
+</div>
+</body>
+<script src="assets/js/jquery-2.1.4.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+<script>
+		$(function(){
+			$(document).mousemove(function(e){
+				var viewportW = $(window).width();
+				// alert(viewportW);
+				if(e.pageX > 78.45 && e.pageX < viewportW - 78.45){
+					$('.jaylon-logo').css('margin-left',e.pageX - 78.45 + 'px');
+
+				}
+			});
+		});
+</script>
+</html>
