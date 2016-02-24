@@ -1,0 +1,25 @@
+{
+  "name": "jaylon",
+  "version": "1.0.0",
+  "description": "jaylon's website.",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp-ruby-sass": "^2.0.6"
+  },
+  "devDependencies": {
+    "eyeglass": "^0.8.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JaylonQi/JaylonQi.github.io.git"
+  },
+  "author": "jaylon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JaylonQi/JaylonQi.github.io/issues"
+  },
+  "homepage": "https://github.com/JaylonQi/JaylonQi.github.io#readme"
+}
