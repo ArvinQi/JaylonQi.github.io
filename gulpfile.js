@@ -18,16 +18,18 @@ var  notify = require('gulp-notify');
 var  cache = require('gulp-cache');
 var jade = require('gulp-jade');
 var coffee = require('gulp-coffee');
+var gutil = require('gulp-util');
+var neat = require('node-neat').includePaths;
 
 //file
-var scssSrc = ["**/*.scss"];
-var scssDist = "dist/css";
+var scssSrc = ["./app/sass/*.scss"];
+var scssDist = "./dist/css";
 
-var jadeSrc = ["**/*.jade"];
-var jadeDist = "dist/html";
+var jadeSrc = ["./app/jade/*.jade"];
+var jadeDist = "./dist/html";
 
-var coffeeSrc = ["**/*.coffee"];
-var coffeeDist = "dist/js";
+var coffeeSrc = ["./app/coffee/*.coffee"];
+var coffeeDist = "./dist/js";
 
 
 
@@ -37,7 +39,9 @@ var coffeeDist = "dist/js";
 gulp.task('serve', ['sass'], function() {
 
 	browserSync.init({
-
+		server: {
+				baseDir: './'
+		}
 		//proxy: '127.0.0.1',
 		//notify: false,
 		//ghostMode: {
@@ -58,7 +62,7 @@ gulp.task('serve', ['sass'], function() {
 gulp.task('sass', function() {
 	return gulp.src(scssSrc)
 		.pipe(sourcemaps.init())
-		.pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
+		.pipe(sass({includePaths: ['styles'].concat(neat), outputStyle: 'expanded'}).on('error', sass.logError))
 		.pipe(gulp.dest(scssDist))
 		.pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
 		.pipe(gulp.dest(scssDist))
