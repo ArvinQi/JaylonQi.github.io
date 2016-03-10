@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="lib/unslider/css/unslider.css">
+    <style>
+        html,
+        body{
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            overflow: hidden;
+        }
+        .my-slider{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+        .my-slider ul{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+        .my-slider ul li{
+            /*width: 100%;*/
+            height: 100%;
+            position: absolute;
+        }
+        #inte{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="my-slider">
+    <ul>
+        <li>
+            <div id="inte"></div>
+        </li>
+        <li>
+            <div id="sale"></div>
+        </li>
+        <li>
+            <div id="pv">
+                <img src="lib/1.bmp" alt="">
+            </div>
+        </li>
+    </ul>
+</div>
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script src="lib/echarts.min.js"></script>
+<script src="lib/unslider/js/unslider-min.js"></script>
+<script>
+    if (!window.jQuery) {
+        var script = document.createElement('script');
+        script.src = "/js/jquery.min.js";
+        document.body.appendChild(script);
+    }
+    $(function(){
+        $('.my-slider').unslider({
+            animation: 'fade',
+            autoplay: true,
+            delay: 3000,
+            speed: 3000,
+            arrows: false,
+            keys: false,
+            nav: false,
+//            infinite: true
+        });
+        //积分导入
+        var inteChart = echarts.init(document.getElementById('inte'));
+        $.get('data.json').done(function (data) {
+            // 填入数据
+            inteChart.setOption({
+                title : {
+                    text: 'E得网积分导入',
+                    subtext: '上海佳金'
+                },
+                tooltip : {
+                    show : true,
+                    alwaysShowContent: true
+                },
+                xAxis : [
+                    {
+                        type : 'category',
+                        boundaryGap : false,
+                        data : ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月']
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value',
+                        axisLabel : {
+//                        formatter: '{value} °C'
+                        }
+                    }
+                ],
+                series : [
+                {
+                    name:'最高气温',
+                    type:'line',
+                    data:data.data,
+                    markPoint : {
+                        data : [
+                            {type : 'max', name: '最大值'},
+                            {type : 'min', name: '最小值'}
+                        ]
+                    },
+                    markLine : {
+                        data : [
+                            {type : 'average', name: '平均值'}
+                        ]
+                    }
+                }
+                ]
+            });
+        });
+        //销售
+        var saleChart = echarts.init(document.getElementById('sale'));
+        $.get('data.json').done(function (data) {
+            // 填入数据
+            saleChart.setOption({
+                title : {
+                    text: 'E得网销售实时数据',
+                    subtext: '上海佳金'
+                },
+                tooltip : {
+                    show : true,
+                    alwaysShowContent: true
+                },
+                xAxis : [
+                    {
+                        type : 'category',
+                        boundaryGap : false,
+                        data : ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月']
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value',
+                        axisLabel : {
+//                        formatter: '{value} °C'
+                        }
+                    }
+                ],
+                series : [
+                    {
+                        name:'销售总积分',
+                        type:'line',
+                        data:data.data,
+                        markPoint : {
+                            data : [
+                                {type : 'max', name: '最大值'},
+                                {type : 'min', name: '最小值'}
+                            ]
+                        },
+                        markLine : {
+                            data : [
+                                {type : 'average', name: '平均值'}
+                            ]
+                        }
+                    }
+                ]
+            });
+        });
+        //pv
+//        var pvChart = echarts.init(document.getElementById('pv'));
+//        $.get('data.json').done(function (data) {
+//            // 填入数据
+//            pvChart.setOption({
+//                title : {
+//                    text: 'E得网积分导入',
+//                    subtext: '上海佳金'
+//                },
+//                tooltip : {
+//                    show : true,
+//                    alwaysShowContent: true
+//                },
+//                xAxis : [
+//                    {
+//                        type : 'category',
+//                        boundaryGap : false,
+//                        data : ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月']
+//                    }
+//                ],
+//                yAxis : [
+//                    {
+//                        type : 'value',
+//                        axisLabel : {
+////                        formatter: '{value} °C'
+//                        }
+//                    }
+//                ],
+//                series : [
+//                    {
+//                        name:'最高气温',
+//                        type:'line',
+//                        data:data.data,
+//                        markPoint : {
+//                            data : [
+//                                {type : 'max', name: '最大值'},
+//                                {type : 'min', name: '最小值'}
+//                            ]
+//                        },
+//                        markLine : {
+//                            data : [
+//                                {type : 'average', name: '平均值'}
+//                            ]
+//                        }
+//                    }
+//                ]
+//            });
+//        });
+    });
+</script>
+</body>
+</html>

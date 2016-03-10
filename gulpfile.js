@@ -54,7 +54,8 @@ gulp.task('serve', ['sass'], function() {
 	gulp.watch(coffeeSrc, ['coffee']);
 	gulp.watch(jadeSrc, ['jade']);
 	gulp.watch(scssSrc, ['sass']);
-	gulp.watch(jadeDist+"/*").on('change', browserSync.reload);
+	gulp.watch(['**/*.css']).on('change', browserSync.reload);
+	gulp.watch(['**/*.html']).on('change', browserSync.reload);
 	gulp.watch(['**/*.js', '!node_modules/**/*']).on('change', browserSync.reload);
 });
 
@@ -74,8 +75,8 @@ gulp.task('sass', function() {
 		.pipe(gulp.dest(scssDist))
 		.pipe(notify({
 			message: 'Styles task complete'
-		}))
-		.pipe(browserSync.stream());
+		}));
+		//.pipe(browserSync.stream());
 });
 //jade complie
 gulp.task('jade', function() {
