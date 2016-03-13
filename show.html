@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style>
+		html,
+		body{
+			background: #000;
+			overflow: hidden;
+			width:100%;
+			height:100%;
+		}
+		.show{
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			perspective: 500px;
+		}
+		.stage{
+			width: 500px;
+			height: 500px;
+			transform-style: preserve-3d;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			margin: auto;
+			/*transform: rotateX(60deg) rotateZ(-30deg);*/
+			animation: rotate 20s infinite linear;
+		}
+		.item{
+			width: 500px;
+			height: 500px;
+			position: absolute;
+			transform-style: preserve-3d;
+			border-radius: 100%;
+			box-sizing: border-box;
+			box-shadow: 0 0 60px #e1e1e1, inset 0 0 60px #e1e1e1;
+		}
+		.item:before,
+		.item:after{
+			content: "";
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			margin: auto;
+			width: 10%;
+			height: 10%;
+			border-radius: 100%;
+			background: #e1e1e1;
+			box-sizing: border-box;
+			box-shadow: 0 0 60px 2px #e1e1e1;
+		}
+		.item:before{
+			transform: translateZ(-250px);
+		}
+		.item:after{
+			transform: translateZ(250px);
+		}
+		.item:nth-of-type(1) {
+			transform: rotateZ(72deg) rotateX(63.435deg);
+		}
+		.item:nth-of-type(2) {
+			transform: rotateZ(144deg) rotateX(63.435deg);
+		}
+		.item:nth-of-type(3) {
+			transform: rotateZ(216deg) rotateX(63.435deg);
+		}
+		.item:nth-of-type(4) {
+			transform: rotateZ(288deg) rotateX(63.435deg);
+		}
+		.item:nth-of-type(5) {
+			transform: rotateZ(360deg) rotateX(63.435deg);
+		}
+		@keyframes rotate {
+			0% {
+				transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+			}
+			100% {
+				transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+			}
+		}
+	</style>
+</head>
+<body>
+<div class="show">
+	<div class="stage">
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+	</div>
+</div>
+</body>
+</html>
