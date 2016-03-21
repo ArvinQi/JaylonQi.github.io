@@ -22,7 +22,7 @@ var gutil = require('gulp-util');
 var neat = require('node-neat').includePaths;
 
 //file
-var scssSrc = ["./app/sass/*.scss"];
+var scssSrc = ["./app/sass/*.sass"];
 var scssDist = "./dist/css";
 
 var jadeSrc = ["./app/jade/*.jade"];

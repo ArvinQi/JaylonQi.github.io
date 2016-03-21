@@ -2,8 +2,12 @@
 doctype html
 head
     meta(charset='utf-8')
-    link(href='../css/app.css',rel='stylesheet')
+    link(href='../../index.ico', rel='shortcut icon')
+    link(href='../css/app.css', rel='stylesheet')
 body
-    canvas
+    .view
+        .plane.main
+            - for (var x = 0; x < 6; x++)
+                .circle
     #FPS
     script(src='../js/app.js')
